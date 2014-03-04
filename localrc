@@ -1,0 +1,32 @@
+# I never got this to work but it is allegedly an option
+# Try qpid at your own risk
+# Switch to use QPid instead of RabbitMQ 
+#disable_service rabbit
+#enable_service qpid
+
+LOGFILE=/home/stack/stack.sh.log
+SCREEN_LOGDIR=$DATA_DIR/logs
+
+# Replace with your primary interface name
+HOST_IP_IFACE=p4p1
+PUBLIC_INTERFACE=p4p1
+VLAN_INTERFACE=p4p1
+# Replace with a private/secondary interface name
+# Many documents suggest making this identical to the interfaces above
+# In my experience this results in default network Nova hosts being network isolated
+# I believe this is a result of the FLAT and PUBLIC ethernet segments overlapping
+# TODO: I have seen reference to explicitly setting FLAT_INTERFACE to v100, which is the
+#       private IP space bridge.  This should accomplish the same thing as the setting
+#       below, which for me is an unused and unconnected secondary NIC.  TEST!
+FLAT_INTERFACE=p4p2
+# Set this to an unused subset of the real IP space attached to the HOST_IP_IFACE
+FLOATING_RANGE=172.31.0.16/28
+# Normally not needed but setting this may fix issues related to bad DNS setups
+#HOST_IP=172.31.0.96
+
+DATABASE_PASSWORD=osadmin
+RABBIT_PASSWORD=osadmin
+SERVICE_TOKEN=osadmin
+SERVICE_PASSWORD=osadmin
+ADMIN_PASSWORD=osadmin
+

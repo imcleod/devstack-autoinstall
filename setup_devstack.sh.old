@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# NOTE: This is related to a patch I carried to disable the rabbitmq restart
+#       attempt.  Upstream has since added a different solution (try restart 10 times)
+#       I am leaving this in for historical reasons and in case the upstream
+#       solution doesn't work.
+
+yum install -y git
+mkdir src
+cd src
+git clone https://github.com/imcleod/devstack.git
+cd devstack
+git remote add upstream https://github.com/openstack-dev/devstack.git
+git fetch upstream
+git checkout -b bug/no-rabbit-restart origin/bug/no-rabbit-restart
+git rebase upstream/master
