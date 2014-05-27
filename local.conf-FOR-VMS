@@ -1,0 +1,32 @@
+[[post-config|$NOVA_CONF]]
+[DEFAULT]
+quota_instances=100
+quota_cores=200
+
+
+
+[[post-config|$CINDER_CONF]]
+[DEFAULT]
+quota_volumes=100
+quota_snapshots=100
+
+[[local|localrc]]
+LOGDAYS=1
+LOGFILE=/home/stack/stack.sh.log
+SCREEN_LOGDIR=$DATA_DIR/logs
+
+# Replace with your primary interface name
+HOST_IP_IFACE=eth0
+PUBLIC_INTERFACE=eth0
+VLAN_INTERFACE=eth0
+# Replace with a private/secondary interface name
+FLAT_INTERFACE=eth1
+# Set this to an unused subset of the real IP space attached to the HOST_IP_IFACE
+FLOATING_RANGE=${FLOATING_RANGE}
+
+DATABASE_PASSWORD=osadmin
+RABBIT_PASSWORD=osadmin
+SERVICE_TOKEN=osadmin
+SERVICE_PASSWORD=osadmin
+ADMIN_PASSWORD=osadmin
+
