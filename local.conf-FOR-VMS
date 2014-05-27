@@ -9,6 +9,7 @@ quota_cores=200
 [DEFAULT]
 quota_volumes=100
 quota_snapshots=100
+use_default_quota_class=False
 
 [[local|localrc]]
 LOGDAYS=1
